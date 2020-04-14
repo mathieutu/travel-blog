@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: Github Pages
 on:
   push:
     branches:
@@ -17,10 +17,14 @@ jobs:
         run: |
           yarn
           yarn build
+        env:
+          CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+          CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
           FOLDER: public
+          COMMIT_MESSAGE: '🚀 Deploying to Github Pages from @${{ github.sha }}.'

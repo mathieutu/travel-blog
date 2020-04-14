@@ -11,4 +11,5 @@ const siteMetadata = require('./config/siteMetadata');
 module.exports = {
   siteMetadata,
   plugins,
+  pathPrefix: '/travel-blog',
 };

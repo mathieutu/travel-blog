@@ -15,7 +15,7 @@ jobs:
           npm run build
 
       - name: Deploy 🚀
-        uses: Blog/deploy
+        uses: LV/github-pages-deploy-action@releases/v1
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: gh-pages # The branch the action should deploy to.

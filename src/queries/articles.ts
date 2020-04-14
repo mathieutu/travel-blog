@@ -7,20 +7,20 @@ export const useGetAllArticles = () => {
       query GetAllArticles {
         allContentfulArticles {
           nodes {
-            id,
-            title,
-            createdAt,
-            updatedAt,
+            id
+            title
+            createdAt
+            updatedAt
             text {
-              text,
-            },
+              text
+            }
             pictures {
-              id,
+              id
               fluid(maxWidth: 300) {
                 ...GatsbyContentfulFluid_withWebp
               }
             }
-          }   
+          }
         }
       }
     `,

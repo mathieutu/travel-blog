@@ -47,7 +47,7 @@
   "scripts": {
     "build": "gatsby build --prefix-paths",
     "build:local": "FORCE_DEV=true gatsby build",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json}\" && eslint --ext .tsx,.ts,.js,.jsx --fix .",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json}\" && eslint --ext .tsx,.ts,.js,.jsx --fix src",
     "dev": "GATSBY_GRAPHQL_IDE=playground gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean"

@@ -23,7 +23,6 @@ export default () => {
           {pictures?.map(picture => (
             <GatsbyImage key={picture.id} fluid={picture.fluid} />
           ))}
-
         </div>
       ))}
       <Link to="/page-2/" className={linkBtnClasses}>

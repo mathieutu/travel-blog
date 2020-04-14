@@ -1,8 +1,9 @@
 const { join } = require('path');
+const { isDev } = require('../env');
 
 module.exports = [
   'gatsby-plugin-typescript',
-  require('./graphqlCodegenPlugin'),
+  isDev && require('./graphqlCodegenPlugin'),
   'gatsby-plugin-eslint',
   'gatsby-plugin-postcss',
   'gatsby-plugin-react-helmet',
@@ -14,4 +15,4 @@ module.exports = [
   'gatsby-plugin-sharp',
   require('./manifestPlugin'),
   require('./contentfulPlugin'),
-];
+].filter(Boolean);

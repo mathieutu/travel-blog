@@ -1,3 +1,5 @@
+const { isDev } = require('./config/env');
+
 module.exports = {
   theme: {
     extend: {},
@@ -5,6 +7,6 @@ module.exports = {
   variants: {},
   plugins: [
     require('@tailwindcss/ui'),
-    require('tailwind-ts')({ exportClassNamesHelper: true }),
+    isDev && require('tailwind-ts')({ exportClassNamesHelper: true }),
   ],
 };

@@ -1,4 +1,6 @@
-if (process.env.NODE_ENV !== 'production') {
+const { isDev } = require('./config/env');
+
+if (isDev) {
   // eslint-disable-next-line import/no-extraneous-dependencies
   require('dotenv').config();
 }

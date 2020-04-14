@@ -2640,8 +2640,10 @@ export type GraphqlQueryAllSitePageArgs = {
 export type GraphqlQuerySiteArgs = {
   buildTime: Maybe<GraphqlDateQueryOperatorInput>;
   siteMetadata: Maybe<GraphqlSiteSiteMetadataFilterInput>;
-  polyfill: Maybe<GraphqlBooleanQueryOperatorInput>;
+  port: Maybe<GraphqlIntQueryOperatorInput>;
+  host: Maybe<GraphqlStringQueryOperatorInput>;
   pathPrefix: Maybe<GraphqlStringQueryOperatorInput>;
+  polyfill: Maybe<GraphqlBooleanQueryOperatorInput>;
   id: Maybe<GraphqlStringQueryOperatorInput>;
   parent: Maybe<GraphqlNodeFilterInput>;
   children: Maybe<GraphqlNodeFilterListInput>;
@@ -2813,8 +2815,10 @@ export type GraphqlQueryAllSitePluginArgs = {
 export type GraphqlSite = GraphqlNode & {
   readonly buildTime?: Maybe<Scalars['Date']>;
   readonly siteMetadata?: Maybe<GraphqlSiteSiteMetadata>;
-  readonly polyfill?: Maybe<Scalars['Boolean']>;
+  readonly port?: Maybe<Scalars['Int']>;
+  readonly host?: Maybe<Scalars['String']>;
   readonly pathPrefix?: Maybe<Scalars['String']>;
+  readonly polyfill?: Maybe<Scalars['Boolean']>;
   readonly id: Scalars['ID'];
   readonly parent?: Maybe<GraphqlNode>;
   readonly children: ReadonlyArray<GraphqlNode>;
@@ -3015,8 +3019,10 @@ export type GraphqlSiteFieldsEnum =
   'siteMetadata___title' |
   'siteMetadata___description' |
   'siteMetadata___author' |
-  'polyfill' |
+  'port' |
+  'host' |
   'pathPrefix' |
+  'polyfill' |
   'id' |
   'parent___id' |
   'parent___parent___id' |
@@ -3107,8 +3113,10 @@ export type GraphqlSiteFieldsEnum =
 export type GraphqlSiteFilterInput = {
   readonly buildTime?: Maybe<GraphqlDateQueryOperatorInput>;
   readonly siteMetadata?: Maybe<GraphqlSiteSiteMetadataFilterInput>;
-  readonly polyfill?: Maybe<GraphqlBooleanQueryOperatorInput>;
+  readonly port?: Maybe<GraphqlIntQueryOperatorInput>;
+  readonly host?: Maybe<GraphqlStringQueryOperatorInput>;
   readonly pathPrefix?: Maybe<GraphqlStringQueryOperatorInput>;
+  readonly polyfill?: Maybe<GraphqlBooleanQueryOperatorInput>;
   readonly id?: Maybe<GraphqlStringQueryOperatorInput>;
   readonly parent?: Maybe<GraphqlNodeFilterInput>;
   readonly children?: Maybe<GraphqlNodeFilterListInput>;

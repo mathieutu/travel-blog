@@ -46,6 +46,7 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build --prefix-paths",
+    "build:local": "FORCE_DEV=true gatsby build",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json}\" && eslint --ext .tsx,.ts,.js,.jsx --fix .",
     "dev": "GATSBY_GRAPHQL_IDE=playground gatsby develop",
     "serve": "gatsby serve",

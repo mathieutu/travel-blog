@@ -8,5 +8,5 @@ module.exports = {
   plugins: [
     require('@tailwindcss/ui'),
     isDev && require('tailwind-ts')({ exportClassNamesHelper: true }),
-  ],
+  ].filter(Boolean),
 };

@@ -2,7 +2,9 @@ const { isDev } = require('./config/env');
 
 module.exports = {
   theme: {
-    extend: {},
+    inset: {
+      '-33': '-33.3%',
+    },
   },
   variants: {},
   plugins: [

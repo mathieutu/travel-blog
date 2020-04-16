@@ -1,6 +1,6 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import { useSiteMetadata } from '../queries/site'
+import { useSiteMetadata } from '../../queries/site'
 
 type SeoProps = {
   description?: string,

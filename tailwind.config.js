@@ -3,7 +3,10 @@ const { isDev } = require('./config/env');
 module.exports = {
   theme: {
     inset: {
-      '-33': '-33.3%',
+      '-1/3': '-33.3%',
+      '1/2': '50%',
+      '2/3': '67.7%',
+      '1/1': '100%',
     },
   },
   variants: {},

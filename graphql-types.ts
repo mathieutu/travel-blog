@@ -41,7 +41,6 @@ export type GraphqlContentfulArticles = GraphqlNode & {
   readonly internal: GraphqlInternal;
   readonly step?: Maybe<Scalars['String']>;
   readonly title?: Maybe<Scalars['String']>;
-  readonly contentfulid?: Maybe<Scalars['Int']>;
   readonly pictures?: Maybe<ReadonlyArray<Maybe<GraphqlContentfulAsset>>>;
   readonly text?: Maybe<GraphqlContentfulArticlesTextTextNode>;
   readonly spaceId?: Maybe<Scalars['String']>;
@@ -185,7 +184,6 @@ export type GraphqlContentfulArticlesFieldsEnum =
   'internal___type' |
   'step' |
   'title' |
-  'contentfulid' |
   'pictures' |
   'pictures___id' |
   'pictures___parent___id' |
@@ -369,7 +367,6 @@ export type GraphqlContentfulArticlesFilterInput = {
   readonly internal?: Maybe<GraphqlInternalFilterInput>;
   readonly step?: Maybe<GraphqlStringQueryOperatorInput>;
   readonly title?: Maybe<GraphqlStringQueryOperatorInput>;
-  readonly contentfulid?: Maybe<GraphqlIntQueryOperatorInput>;
   readonly pictures?: Maybe<GraphqlContentfulAssetFilterListInput>;
   readonly text?: Maybe<GraphqlContentfulArticlesTextTextNodeFilterInput>;
   readonly spaceId?: Maybe<GraphqlStringQueryOperatorInput>;
@@ -1517,6 +1514,8 @@ export type GraphqlFile = GraphqlNode & {
   readonly birthtime?: Maybe<Scalars['Date']>;
   /** @deprecated Use `birthTime` instead */
   readonly birthtimeMs?: Maybe<Scalars['Float']>;
+  readonly blksize?: Maybe<Scalars['Int']>;
+  readonly blocks?: Maybe<Scalars['Int']>;
   /** Copy file to static directory and return public url to it */
   readonly publicURL?: Maybe<Scalars['String']>;
   readonly childImageSharp?: Maybe<GraphqlImageSharp>;
@@ -1641,6 +1640,8 @@ export type GraphqlFileFieldsEnum =
   'ctime' |
   'birthtime' |
   'birthtimeMs' |
+  'blksize' |
+  'blocks' |
   'publicURL' |
   'childImageSharp___fixed___base64' |
   'childImageSharp___fixed___tracedSVG' |
@@ -1852,6 +1853,8 @@ export type GraphqlFileFilterInput = {
   readonly ctime?: Maybe<GraphqlDateQueryOperatorInput>;
   readonly birthtime?: Maybe<GraphqlDateQueryOperatorInput>;
   readonly birthtimeMs?: Maybe<GraphqlFloatQueryOperatorInput>;
+  readonly blksize?: Maybe<GraphqlIntQueryOperatorInput>;
+  readonly blocks?: Maybe<GraphqlIntQueryOperatorInput>;
   readonly publicURL?: Maybe<GraphqlStringQueryOperatorInput>;
   readonly childImageSharp?: Maybe<GraphqlImageSharpFilterInput>;
   readonly id?: Maybe<GraphqlStringQueryOperatorInput>;
@@ -2538,6 +2541,8 @@ export type GraphqlQueryFileArgs = {
   ctime: Maybe<GraphqlDateQueryOperatorInput>;
   birthtime: Maybe<GraphqlDateQueryOperatorInput>;
   birthtimeMs: Maybe<GraphqlFloatQueryOperatorInput>;
+  blksize: Maybe<GraphqlIntQueryOperatorInput>;
+  blocks: Maybe<GraphqlIntQueryOperatorInput>;
   publicURL: Maybe<GraphqlStringQueryOperatorInput>;
   childImageSharp: Maybe<GraphqlImageSharpFilterInput>;
   id: Maybe<GraphqlStringQueryOperatorInput>;
@@ -2610,14 +2615,14 @@ export type GraphqlQuerySitePageArgs = {
   internalComponentName: Maybe<GraphqlStringQueryOperatorInput>;
   componentChunkName: Maybe<GraphqlStringQueryOperatorInput>;
   matchPath: Maybe<GraphqlStringQueryOperatorInput>;
-  isCreatedByStatefulCreatePages: Maybe<GraphqlBooleanQueryOperatorInput>;
-  pluginCreator: Maybe<GraphqlSitePluginFilterInput>;
-  pluginCreatorId: Maybe<GraphqlStringQueryOperatorInput>;
-  componentPath: Maybe<GraphqlStringQueryOperatorInput>;
   id: Maybe<GraphqlStringQueryOperatorInput>;
   parent: Maybe<GraphqlNodeFilterInput>;
   children: Maybe<GraphqlNodeFilterListInput>;
   internal: Maybe<GraphqlInternalFilterInput>;
+  isCreatedByStatefulCreatePages: Maybe<GraphqlBooleanQueryOperatorInput>;
+  pluginCreator: Maybe<GraphqlSitePluginFilterInput>;
+  pluginCreatorId: Maybe<GraphqlStringQueryOperatorInput>;
+  componentPath: Maybe<GraphqlStringQueryOperatorInput>;
 };
 
 
@@ -2723,7 +2728,6 @@ export type GraphqlQueryContentfulArticlesArgs = {
   internal: Maybe<GraphqlInternalFilterInput>;
   step: Maybe<GraphqlStringQueryOperatorInput>;
   title: Maybe<GraphqlStringQueryOperatorInput>;
-  contentfulid: Maybe<GraphqlIntQueryOperatorInput>;
   pictures: Maybe<GraphqlContentfulAssetFilterListInput>;
   text: Maybe<GraphqlContentfulArticlesTextTextNodeFilterInput>;
   spaceId: Maybe<GraphqlStringQueryOperatorInput>;
@@ -3130,14 +3134,14 @@ export type GraphqlSitePage = GraphqlNode & {
   readonly internalComponentName: Scalars['String'];
   readonly componentChunkName: Scalars['String'];
   readonly matchPath?: Maybe<Scalars['String']>;
-  readonly isCreatedByStatefulCreatePages?: Maybe<Scalars['Boolean']>;
-  readonly pluginCreator?: Maybe<GraphqlSitePlugin>;
-  readonly pluginCreatorId?: Maybe<Scalars['String']>;
-  readonly componentPath?: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
   readonly parent?: Maybe<GraphqlNode>;
   readonly children: ReadonlyArray<GraphqlNode>;
   readonly internal: GraphqlInternal;
+  readonly isCreatedByStatefulCreatePages?: Maybe<Scalars['Boolean']>;
+  readonly pluginCreator?: Maybe<GraphqlSitePlugin>;
+  readonly pluginCreatorId?: Maybe<Scalars['String']>;
+  readonly componentPath?: Maybe<Scalars['String']>;
 };
 
 export type GraphqlSitePageConnection = {
@@ -3173,87 +3177,6 @@ export type GraphqlSitePageFieldsEnum =
   'internalComponentName' |
   'componentChunkName' |
   'matchPath' |
-  'isCreatedByStatefulCreatePages' |
-  'pluginCreator___id' |
-  'pluginCreator___parent___id' |
-  'pluginCreator___parent___parent___id' |
-  'pluginCreator___parent___parent___children' |
-  'pluginCreator___parent___children' |
-  'pluginCreator___parent___children___id' |
-  'pluginCreator___parent___children___children' |
-  'pluginCreator___parent___internal___content' |
-  'pluginCreator___parent___internal___contentDigest' |
-  'pluginCreator___parent___internal___description' |
-  'pluginCreator___parent___internal___fieldOwners' |
-  'pluginCreator___parent___internal___ignoreType' |
-  'pluginCreator___parent___internal___mediaType' |
-  'pluginCreator___parent___internal___owner' |
-  'pluginCreator___parent___internal___type' |
-  'pluginCreator___children' |
-  'pluginCreator___children___id' |
-  'pluginCreator___children___parent___id' |
-  'pluginCreator___children___parent___children' |
-  'pluginCreator___children___children' |
-  'pluginCreator___children___children___id' |
-  'pluginCreator___children___children___children' |
-  'pluginCreator___children___internal___content' |
-  'pluginCreator___children___internal___contentDigest' |
-  'pluginCreator___children___internal___description' |
-  'pluginCreator___children___internal___fieldOwners' |
-  'pluginCreator___children___internal___ignoreType' |
-  'pluginCreator___children___internal___mediaType' |
-  'pluginCreator___children___internal___owner' |
-  'pluginCreator___children___internal___type' |
-  'pluginCreator___internal___content' |
-  'pluginCreator___internal___contentDigest' |
-  'pluginCreator___internal___description' |
-  'pluginCreator___internal___fieldOwners' |
-  'pluginCreator___internal___ignoreType' |
-  'pluginCreator___internal___mediaType' |
-  'pluginCreator___internal___owner' |
-  'pluginCreator___internal___type' |
-  'pluginCreator___resolve' |
-  'pluginCreator___name' |
-  'pluginCreator___version' |
-  'pluginCreator___pluginOptions___codegenConfig___typesPrefix' |
-  'pluginCreator___pluginOptions___codegenConfig___immutableTypes' |
-  'pluginCreator___pluginOptions___codegenConfig___maybeValue' |
-  'pluginCreator___pluginOptions___codegenConfig___preResolveTypes' |
-  'pluginCreator___pluginOptions___codegenConfig___addUnderscoreToArgsType' |
-  'pluginCreator___pluginOptions___codegenPlugins' |
-  'pluginCreator___pluginOptions___name' |
-  'pluginCreator___pluginOptions___path' |
-  'pluginCreator___pluginOptions___short_name' |
-  'pluginCreator___pluginOptions___start_url' |
-  'pluginCreator___pluginOptions___background_color' |
-  'pluginCreator___pluginOptions___theme_color' |
-  'pluginCreator___pluginOptions___display' |
-  'pluginCreator___pluginOptions___icon' |
-  'pluginCreator___pluginOptions___spaceId' |
-  'pluginCreator___pluginOptions___accessToken' |
-  'pluginCreator___pluginOptions___pathCheck' |
-  'pluginCreator___nodeAPIs' |
-  'pluginCreator___browserAPIs' |
-  'pluginCreator___ssrAPIs' |
-  'pluginCreator___pluginFilepath' |
-  'pluginCreator___packageJson___name' |
-  'pluginCreator___packageJson___description' |
-  'pluginCreator___packageJson___version' |
-  'pluginCreator___packageJson___main' |
-  'pluginCreator___packageJson___author' |
-  'pluginCreator___packageJson___license' |
-  'pluginCreator___packageJson___dependencies' |
-  'pluginCreator___packageJson___dependencies___name' |
-  'pluginCreator___packageJson___dependencies___version' |
-  'pluginCreator___packageJson___devDependencies' |
-  'pluginCreator___packageJson___devDependencies___name' |
-  'pluginCreator___packageJson___devDependencies___version' |
-  'pluginCreator___packageJson___peerDependencies' |
-  'pluginCreator___packageJson___peerDependencies___name' |
-  'pluginCreator___packageJson___peerDependencies___version' |
-  'pluginCreator___packageJson___keywords' |
-  'pluginCreatorId' |
-  'componentPath' |
   'id' |
   'parent___id' |
   'parent___parent___id' |
@@ -3339,7 +3262,88 @@ export type GraphqlSitePageFieldsEnum =
   'internal___ignoreType' |
   'internal___mediaType' |
   'internal___owner' |
-  'internal___type';
+  'internal___type' |
+  'isCreatedByStatefulCreatePages' |
+  'pluginCreator___id' |
+  'pluginCreator___parent___id' |
+  'pluginCreator___parent___parent___id' |
+  'pluginCreator___parent___parent___children' |
+  'pluginCreator___parent___children' |
+  'pluginCreator___parent___children___id' |
+  'pluginCreator___parent___children___children' |
+  'pluginCreator___parent___internal___content' |
+  'pluginCreator___parent___internal___contentDigest' |
+  'pluginCreator___parent___internal___description' |
+  'pluginCreator___parent___internal___fieldOwners' |
+  'pluginCreator___parent___internal___ignoreType' |
+  'pluginCreator___parent___internal___mediaType' |
+  'pluginCreator___parent___internal___owner' |
+  'pluginCreator___parent___internal___type' |
+  'pluginCreator___children' |
+  'pluginCreator___children___id' |
+  'pluginCreator___children___parent___id' |
+  'pluginCreator___children___parent___children' |
+  'pluginCreator___children___children' |
+  'pluginCreator___children___children___id' |
+  'pluginCreator___children___children___children' |
+  'pluginCreator___children___internal___content' |
+  'pluginCreator___children___internal___contentDigest' |
+  'pluginCreator___children___internal___description' |
+  'pluginCreator___children___internal___fieldOwners' |
+  'pluginCreator___children___internal___ignoreType' |
+  'pluginCreator___children___internal___mediaType' |
+  'pluginCreator___children___internal___owner' |
+  'pluginCreator___children___internal___type' |
+  'pluginCreator___internal___content' |
+  'pluginCreator___internal___contentDigest' |
+  'pluginCreator___internal___description' |
+  'pluginCreator___internal___fieldOwners' |
+  'pluginCreator___internal___ignoreType' |
+  'pluginCreator___internal___mediaType' |
+  'pluginCreator___internal___owner' |
+  'pluginCreator___internal___type' |
+  'pluginCreator___resolve' |
+  'pluginCreator___name' |
+  'pluginCreator___version' |
+  'pluginCreator___pluginOptions___codegenConfig___typesPrefix' |
+  'pluginCreator___pluginOptions___codegenConfig___immutableTypes' |
+  'pluginCreator___pluginOptions___codegenConfig___maybeValue' |
+  'pluginCreator___pluginOptions___codegenConfig___preResolveTypes' |
+  'pluginCreator___pluginOptions___codegenConfig___addUnderscoreToArgsType' |
+  'pluginCreator___pluginOptions___codegenPlugins' |
+  'pluginCreator___pluginOptions___name' |
+  'pluginCreator___pluginOptions___path' |
+  'pluginCreator___pluginOptions___short_name' |
+  'pluginCreator___pluginOptions___start_url' |
+  'pluginCreator___pluginOptions___background_color' |
+  'pluginCreator___pluginOptions___theme_color' |
+  'pluginCreator___pluginOptions___display' |
+  'pluginCreator___pluginOptions___icon' |
+  'pluginCreator___pluginOptions___spaceId' |
+  'pluginCreator___pluginOptions___accessToken' |
+  'pluginCreator___pluginOptions___pathCheck' |
+  'pluginCreator___nodeAPIs' |
+  'pluginCreator___browserAPIs' |
+  'pluginCreator___ssrAPIs' |
+  'pluginCreator___pluginFilepath' |
+  'pluginCreator___packageJson___name' |
+  'pluginCreator___packageJson___description' |
+  'pluginCreator___packageJson___version' |
+  'pluginCreator___packageJson___main' |
+  'pluginCreator___packageJson___author' |
+  'pluginCreator___packageJson___license' |
+  'pluginCreator___packageJson___dependencies' |
+  'pluginCreator___packageJson___dependencies___name' |
+  'pluginCreator___packageJson___dependencies___version' |
+  'pluginCreator___packageJson___devDependencies' |
+  'pluginCreator___packageJson___devDependencies___name' |
+  'pluginCreator___packageJson___devDependencies___version' |
+  'pluginCreator___packageJson___peerDependencies' |
+  'pluginCreator___packageJson___peerDependencies___name' |
+  'pluginCreator___packageJson___peerDependencies___version' |
+  'pluginCreator___packageJson___keywords' |
+  'pluginCreatorId' |
+  'componentPath';
 
 export type GraphqlSitePageFilterInput = {
   readonly path?: Maybe<GraphqlStringQueryOperatorInput>;
@@ -3347,14 +3351,14 @@ export type GraphqlSitePageFilterInput = {
   readonly internalComponentName?: Maybe<GraphqlStringQueryOperatorInput>;
   readonly componentChunkName?: Maybe<GraphqlStringQueryOperatorInput>;
   readonly matchPath?: Maybe<GraphqlStringQueryOperatorInput>;
-  readonly isCreatedByStatefulCreatePages?: Maybe<GraphqlBooleanQueryOperatorInput>;
-  readonly pluginCreator?: Maybe<GraphqlSitePluginFilterInput>;
-  readonly pluginCreatorId?: Maybe<GraphqlStringQueryOperatorInput>;
-  readonly componentPath?: Maybe<GraphqlStringQueryOperatorInput>;
   readonly id?: Maybe<GraphqlStringQueryOperatorInput>;
   readonly parent?: Maybe<GraphqlNodeFilterInput>;
   readonly children?: Maybe<GraphqlNodeFilterListInput>;
   readonly internal?: Maybe<GraphqlInternalFilterInput>;
+  readonly isCreatedByStatefulCreatePages?: Maybe<GraphqlBooleanQueryOperatorInput>;
+  readonly pluginCreator?: Maybe<GraphqlSitePluginFilterInput>;
+  readonly pluginCreatorId?: Maybe<GraphqlStringQueryOperatorInput>;
+  readonly componentPath?: Maybe<GraphqlStringQueryOperatorInput>;
 };
 
 export type GraphqlSitePageGroupConnection = {

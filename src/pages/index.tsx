@@ -13,7 +13,7 @@ export default () => {
       <Seo title="Home" />
       <div className={container}>
         <button className="fixed left-1/2" type="button" onClick={() => setHidden(value => !value)}>test</button>
-        <Informations hidden={test} />
+        <Informations hidden={hidden} />
       </div>
     </>
   )

@@ -13,7 +13,7 @@ type InformationsProps = {
 export const Informations = ({ hidden }: InformationsProps) => {
 
   return (
-    <div className={`${hidden ? 'left-2/3' : 'left-1/1'} fixed w-2/6 bg-white h-full top-0`}>
+    <div className={`${hidden ? 'left-2/3' : 'left-1/1'} fixed w-2/6 bg-white h-full top-0 z-20`}>
       <div>
         <Title title="Etape 2" />
         <Slider img="https://images.lanouvellerepublique.fr/image/upload/t_1020w/f_auto/5b95be27be7744fb5c8b467b.jpg" />

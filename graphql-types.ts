@@ -1514,8 +1514,6 @@ export type GraphqlFile = GraphqlNode & {
   readonly birthtime?: Maybe<Scalars['Date']>;
   /** @deprecated Use `birthTime` instead */
   readonly birthtimeMs?: Maybe<Scalars['Float']>;
-  readonly blksize?: Maybe<Scalars['Int']>;
-  readonly blocks?: Maybe<Scalars['Int']>;
   /** Copy file to static directory and return public url to it */
   readonly publicURL?: Maybe<Scalars['String']>;
   readonly childImageSharp?: Maybe<GraphqlImageSharp>;
@@ -1640,8 +1638,6 @@ export type GraphqlFileFieldsEnum =
   'ctime' |
   'birthtime' |
   'birthtimeMs' |
-  'blksize' |
-  'blocks' |
   'publicURL' |
   'childImageSharp___fixed___base64' |
   'childImageSharp___fixed___tracedSVG' |
@@ -1853,8 +1849,6 @@ export type GraphqlFileFilterInput = {
   readonly ctime?: Maybe<GraphqlDateQueryOperatorInput>;
   readonly birthtime?: Maybe<GraphqlDateQueryOperatorInput>;
   readonly birthtimeMs?: Maybe<GraphqlFloatQueryOperatorInput>;
-  readonly blksize?: Maybe<GraphqlIntQueryOperatorInput>;
-  readonly blocks?: Maybe<GraphqlIntQueryOperatorInput>;
   readonly publicURL?: Maybe<GraphqlStringQueryOperatorInput>;
   readonly childImageSharp?: Maybe<GraphqlImageSharpFilterInput>;
   readonly id?: Maybe<GraphqlStringQueryOperatorInput>;
@@ -2541,8 +2535,6 @@ export type GraphqlQueryFileArgs = {
   ctime: Maybe<GraphqlDateQueryOperatorInput>;
   birthtime: Maybe<GraphqlDateQueryOperatorInput>;
   birthtimeMs: Maybe<GraphqlFloatQueryOperatorInput>;
-  blksize: Maybe<GraphqlIntQueryOperatorInput>;
-  blocks: Maybe<GraphqlIntQueryOperatorInput>;
   publicURL: Maybe<GraphqlStringQueryOperatorInput>;
   childImageSharp: Maybe<GraphqlImageSharpFilterInput>;
   id: Maybe<GraphqlStringQueryOperatorInput>;
@@ -3313,14 +3305,14 @@ export type GraphqlSitePageFieldsEnum =
   'pluginCreator___pluginOptions___codegenPlugins' |
   'pluginCreator___pluginOptions___name' |
   'pluginCreator___pluginOptions___path' |
-  'pluginCreator___pluginOptions___spaceId' |
-  'pluginCreator___pluginOptions___accessToken' |
-  'pluginCreator___pluginOptions___pathCheck' |
   'pluginCreator___pluginOptions___short_name' |
   'pluginCreator___pluginOptions___start_url' |
   'pluginCreator___pluginOptions___background_color' |
   'pluginCreator___pluginOptions___theme_color' |
   'pluginCreator___pluginOptions___display' |
+  'pluginCreator___pluginOptions___spaceId' |
+  'pluginCreator___pluginOptions___accessToken' |
+  'pluginCreator___pluginOptions___pathCheck' |
   'pluginCreator___nodeAPIs' |
   'pluginCreator___browserAPIs' |
   'pluginCreator___ssrAPIs' |
@@ -3517,14 +3509,14 @@ export type GraphqlSitePluginFieldsEnum =
   'pluginOptions___codegenPlugins___options___content' |
   'pluginOptions___name' |
   'pluginOptions___path' |
-  'pluginOptions___spaceId' |
-  'pluginOptions___accessToken' |
-  'pluginOptions___pathCheck' |
   'pluginOptions___short_name' |
   'pluginOptions___start_url' |
   'pluginOptions___background_color' |
   'pluginOptions___theme_color' |
   'pluginOptions___display' |
+  'pluginOptions___spaceId' |
+  'pluginOptions___accessToken' |
+  'pluginOptions___pathCheck' |
   'nodeAPIs' |
   'browserAPIs' |
   'ssrAPIs' |
@@ -3644,14 +3636,14 @@ export type GraphqlSitePluginPluginOptions = {
   readonly codegenPlugins?: Maybe<ReadonlyArray<Maybe<GraphqlSitePluginPluginOptionsCodegenPlugins>>>;
   readonly name?: Maybe<Scalars['String']>;
   readonly path?: Maybe<Scalars['String']>;
-  readonly spaceId?: Maybe<Scalars['String']>;
-  readonly accessToken?: Maybe<Scalars['String']>;
-  readonly pathCheck?: Maybe<Scalars['Boolean']>;
   readonly short_name?: Maybe<Scalars['String']>;
   readonly start_url?: Maybe<Scalars['String']>;
   readonly background_color?: Maybe<Scalars['String']>;
   readonly theme_color?: Maybe<Scalars['String']>;
   readonly display?: Maybe<Scalars['String']>;
+  readonly spaceId?: Maybe<Scalars['String']>;
+  readonly accessToken?: Maybe<Scalars['String']>;
+  readonly pathCheck?: Maybe<Scalars['Boolean']>;
 };
 
 export type GraphqlSitePluginPluginOptionsCodegenConfig = {
@@ -3705,14 +3697,14 @@ export type GraphqlSitePluginPluginOptionsFilterInput = {
   readonly codegenPlugins?: Maybe<GraphqlSitePluginPluginOptionsCodegenPluginsFilterListInput>;
   readonly name?: Maybe<GraphqlStringQueryOperatorInput>;
   readonly path?: Maybe<GraphqlStringQueryOperatorInput>;
-  readonly spaceId?: Maybe<GraphqlStringQueryOperatorInput>;
-  readonly accessToken?: Maybe<GraphqlStringQueryOperatorInput>;
-  readonly pathCheck?: Maybe<GraphqlBooleanQueryOperatorInput>;
   readonly short_name?: Maybe<GraphqlStringQueryOperatorInput>;
   readonly start_url?: Maybe<GraphqlStringQueryOperatorInput>;
   readonly background_color?: Maybe<GraphqlStringQueryOperatorInput>;
   readonly theme_color?: Maybe<GraphqlStringQueryOperatorInput>;
   readonly display?: Maybe<GraphqlStringQueryOperatorInput>;
+  readonly spaceId?: Maybe<GraphqlStringQueryOperatorInput>;
+  readonly accessToken?: Maybe<GraphqlStringQueryOperatorInput>;
+  readonly pathCheck?: Maybe<GraphqlBooleanQueryOperatorInput>;
 };
 
 export type GraphqlSitePluginSortInput = {

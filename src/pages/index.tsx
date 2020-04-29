@@ -1,33 +1,20 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import GatsbyImage from 'gatsby-image'
-import { Layout } from '../components/Layout'
-import { Seo } from '../components/Seo'
-import { useGetAllArticles } from '../queries/articles'
-import { linkBtnClasses } from '../styles/button'
+import React, { useState } from 'react'
+
+import { Seo } from '../components/Seo/index'
+import { Informations } from '../components/Informations/index'
+import { container } from '../styles/container'
+
 
 export default () => {
-  const articles = useGetAllArticles()
+  const [hidden, setHidden] = useState(false)
 
   return (
-    <Layout>
+    <>
       <Seo title="Home" />
-      <h1 className="text-3xl">Hi people</h1>
-      {articles.map(({ title, pictures, text, createdAt, id, updatedAt }) => (
-        <div key={id}>
-          <h2 className="text-xl">{title}</h2>
-          <p>id: {id}</p>
-          <p>createdAt: {createdAt}</p>
-          <p>updatedAt: {updatedAt}</p>
-          <p>text: {text?.text}</p>
-          {pictures?.map(picture => (
-            <GatsbyImage key={picture.id} fluid={picture.fluid} />
-          ))}
-        </div>
-      ))}
-      <Link to="/page-2/" className={linkBtnClasses}>
-        Go to page 2
-      </Link>
-    </Layout>
+      <div className={container}>
+        <button className="fixed left-1/2" type="button" onClick={() => setHidden(value => !value)}>test</button>
+        <Informations hidden={hidden} />
+      </div>
+    </>
   )
 }

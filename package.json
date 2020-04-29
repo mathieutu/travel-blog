@@ -19,9 +19,11 @@
     "gatsby-source-contentful": "^2.2.7",
     "gatsby-source-filesystem": "^2.2.2",
     "gatsby-transformer-sharp": "^2.4.3",
+    "leaflet": "^1.6.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
+    "react-leaflet": "^2.6.3",
     "tailwind-ts": "^0.0.1",
     "tailwindcss": "^1.2.0"
   },
@@ -48,7 +50,6 @@
     "build": "gatsby build --prefix-paths",
     "build:local": "FORCE_DEV=true gatsby build",
     "dev": "GATSBY_GRAPHQL_IDE=playground gatsby develop",
-
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json}\" && eslint --ext .tsx,.ts,.js,.jsx --fix src",
     "typecheck": "tsc --noEmit",
     "serve": "gatsby serve",

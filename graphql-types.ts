@@ -41,7 +41,6 @@ export type GraphqlContentfulArticles = GraphqlNode & {
   readonly internal: GraphqlInternal;
   readonly step?: Maybe<Scalars['String']>;
   readonly title?: Maybe<Scalars['String']>;
-  readonly pictures?: Maybe<ReadonlyArray<Maybe<GraphqlContentfulAsset>>>;
   readonly text?: Maybe<GraphqlContentfulArticlesTextTextNode>;
   readonly spaceId?: Maybe<Scalars['String']>;
   readonly contentful_id?: Maybe<Scalars['String']>;
@@ -49,6 +48,7 @@ export type GraphqlContentfulArticles = GraphqlNode & {
   readonly updatedAt?: Maybe<Scalars['Date']>;
   readonly sys?: Maybe<GraphqlContentfulArticlesSys>;
   readonly node_locale?: Maybe<Scalars['String']>;
+  readonly pictures?: Maybe<ReadonlyArray<Maybe<GraphqlContentfulAsset>>>;
   readonly childContentfulArticlesTextTextNode?: Maybe<GraphqlContentfulArticlesTextTextNode>;
 };
 
@@ -184,6 +184,55 @@ export type GraphqlContentfulArticlesFieldsEnum =
   'internal___type' |
   'step' |
   'title' |
+  'text___id' |
+  'text___parent___id' |
+  'text___parent___parent___id' |
+  'text___parent___parent___children' |
+  'text___parent___children' |
+  'text___parent___children___id' |
+  'text___parent___children___children' |
+  'text___parent___internal___content' |
+  'text___parent___internal___contentDigest' |
+  'text___parent___internal___description' |
+  'text___parent___internal___fieldOwners' |
+  'text___parent___internal___ignoreType' |
+  'text___parent___internal___mediaType' |
+  'text___parent___internal___owner' |
+  'text___parent___internal___type' |
+  'text___children' |
+  'text___children___id' |
+  'text___children___parent___id' |
+  'text___children___parent___children' |
+  'text___children___children' |
+  'text___children___children___id' |
+  'text___children___children___children' |
+  'text___children___internal___content' |
+  'text___children___internal___contentDigest' |
+  'text___children___internal___description' |
+  'text___children___internal___fieldOwners' |
+  'text___children___internal___ignoreType' |
+  'text___children___internal___mediaType' |
+  'text___children___internal___owner' |
+  'text___children___internal___type' |
+  'text___internal___content' |
+  'text___internal___contentDigest' |
+  'text___internal___description' |
+  'text___internal___fieldOwners' |
+  'text___internal___ignoreType' |
+  'text___internal___mediaType' |
+  'text___internal___owner' |
+  'text___internal___type' |
+  'text___text' |
+  'spaceId' |
+  'contentful_id' |
+  'createdAt' |
+  'updatedAt' |
+  'sys___revision' |
+  'sys___contentType___sys___type' |
+  'sys___contentType___sys___linkType' |
+  'sys___contentType___sys___id' |
+  'sys___contentType___sys___contentful_id' |
+  'node_locale' |
   'pictures' |
   'pictures___id' |
   'pictures___parent___id' |
@@ -271,55 +320,6 @@ export type GraphqlContentfulArticlesFieldsEnum =
   'pictures___resize___width' |
   'pictures___resize___height' |
   'pictures___resize___aspectRatio' |
-  'text___id' |
-  'text___parent___id' |
-  'text___parent___parent___id' |
-  'text___parent___parent___children' |
-  'text___parent___children' |
-  'text___parent___children___id' |
-  'text___parent___children___children' |
-  'text___parent___internal___content' |
-  'text___parent___internal___contentDigest' |
-  'text___parent___internal___description' |
-  'text___parent___internal___fieldOwners' |
-  'text___parent___internal___ignoreType' |
-  'text___parent___internal___mediaType' |
-  'text___parent___internal___owner' |
-  'text___parent___internal___type' |
-  'text___children' |
-  'text___children___id' |
-  'text___children___parent___id' |
-  'text___children___parent___children' |
-  'text___children___children' |
-  'text___children___children___id' |
-  'text___children___children___children' |
-  'text___children___internal___content' |
-  'text___children___internal___contentDigest' |
-  'text___children___internal___description' |
-  'text___children___internal___fieldOwners' |
-  'text___children___internal___ignoreType' |
-  'text___children___internal___mediaType' |
-  'text___children___internal___owner' |
-  'text___children___internal___type' |
-  'text___internal___content' |
-  'text___internal___contentDigest' |
-  'text___internal___description' |
-  'text___internal___fieldOwners' |
-  'text___internal___ignoreType' |
-  'text___internal___mediaType' |
-  'text___internal___owner' |
-  'text___internal___type' |
-  'text___text' |
-  'spaceId' |
-  'contentful_id' |
-  'createdAt' |
-  'updatedAt' |
-  'sys___revision' |
-  'sys___contentType___sys___type' |
-  'sys___contentType___sys___linkType' |
-  'sys___contentType___sys___id' |
-  'sys___contentType___sys___contentful_id' |
-  'node_locale' |
   'childContentfulArticlesTextTextNode___id' |
   'childContentfulArticlesTextTextNode___parent___id' |
   'childContentfulArticlesTextTextNode___parent___parent___id' |
@@ -367,7 +367,6 @@ export type GraphqlContentfulArticlesFilterInput = {
   readonly internal?: Maybe<GraphqlInternalFilterInput>;
   readonly step?: Maybe<GraphqlStringQueryOperatorInput>;
   readonly title?: Maybe<GraphqlStringQueryOperatorInput>;
-  readonly pictures?: Maybe<GraphqlContentfulAssetFilterListInput>;
   readonly text?: Maybe<GraphqlContentfulArticlesTextTextNodeFilterInput>;
   readonly spaceId?: Maybe<GraphqlStringQueryOperatorInput>;
   readonly contentful_id?: Maybe<GraphqlStringQueryOperatorInput>;
@@ -375,6 +374,7 @@ export type GraphqlContentfulArticlesFilterInput = {
   readonly updatedAt?: Maybe<GraphqlDateQueryOperatorInput>;
   readonly sys?: Maybe<GraphqlContentfulArticlesSysFilterInput>;
   readonly node_locale?: Maybe<GraphqlStringQueryOperatorInput>;
+  readonly pictures?: Maybe<GraphqlContentfulAssetFilterListInput>;
   readonly childContentfulArticlesTextTextNode?: Maybe<GraphqlContentfulArticlesTextTextNodeFilterInput>;
 };
 
@@ -2612,6 +2612,7 @@ export type GraphqlQuerySitePageArgs = {
   children: Maybe<GraphqlNodeFilterListInput>;
   internal: Maybe<GraphqlInternalFilterInput>;
   isCreatedByStatefulCreatePages: Maybe<GraphqlBooleanQueryOperatorInput>;
+  context: Maybe<GraphqlSitePageContextFilterInput>;
   pluginCreator: Maybe<GraphqlSitePluginFilterInput>;
   pluginCreatorId: Maybe<GraphqlStringQueryOperatorInput>;
   componentPath: Maybe<GraphqlStringQueryOperatorInput>;
@@ -2720,7 +2721,6 @@ export type GraphqlQueryContentfulArticlesArgs = {
   internal: Maybe<GraphqlInternalFilterInput>;
   step: Maybe<GraphqlStringQueryOperatorInput>;
   title: Maybe<GraphqlStringQueryOperatorInput>;
-  pictures: Maybe<GraphqlContentfulAssetFilterListInput>;
   text: Maybe<GraphqlContentfulArticlesTextTextNodeFilterInput>;
   spaceId: Maybe<GraphqlStringQueryOperatorInput>;
   contentful_id: Maybe<GraphqlStringQueryOperatorInput>;
@@ -2728,6 +2728,7 @@ export type GraphqlQueryContentfulArticlesArgs = {
   updatedAt: Maybe<GraphqlDateQueryOperatorInput>;
   sys: Maybe<GraphqlContentfulArticlesSysFilterInput>;
   node_locale: Maybe<GraphqlStringQueryOperatorInput>;
+  pictures: Maybe<GraphqlContentfulAssetFilterListInput>;
   childContentfulArticlesTextTextNode: Maybe<GraphqlContentfulArticlesTextTextNodeFilterInput>;
 };
 
@@ -3131,6 +3132,7 @@ export type GraphqlSitePage = GraphqlNode & {
   readonly children: ReadonlyArray<GraphqlNode>;
   readonly internal: GraphqlInternal;
   readonly isCreatedByStatefulCreatePages?: Maybe<Scalars['Boolean']>;
+  readonly context?: Maybe<GraphqlSitePageContext>;
   readonly pluginCreator?: Maybe<GraphqlSitePlugin>;
   readonly pluginCreatorId?: Maybe<Scalars['String']>;
   readonly componentPath?: Maybe<Scalars['String']>;
@@ -3155,6 +3157,14 @@ export type GraphqlSitePageConnectionGroupArgs = {
   skip: Maybe<Scalars['Int']>;
   limit: Maybe<Scalars['Int']>;
   field: GraphqlSitePageFieldsEnum;
+};
+
+export type GraphqlSitePageContext = {
+  readonly step?: Maybe<Scalars['String']>;
+};
+
+export type GraphqlSitePageContextFilterInput = {
+  readonly step?: Maybe<GraphqlStringQueryOperatorInput>;
 };
 
 export type GraphqlSitePageEdge = {
@@ -3256,6 +3266,7 @@ export type GraphqlSitePageFieldsEnum =
   'internal___owner' |
   'internal___type' |
   'isCreatedByStatefulCreatePages' |
+  'context___step' |
   'pluginCreator___id' |
   'pluginCreator___parent___id' |
   'pluginCreator___parent___parent___id' |
@@ -3347,6 +3358,7 @@ export type GraphqlSitePageFilterInput = {
   readonly children?: Maybe<GraphqlNodeFilterListInput>;
   readonly internal?: Maybe<GraphqlInternalFilterInput>;
   readonly isCreatedByStatefulCreatePages?: Maybe<GraphqlBooleanQueryOperatorInput>;
+  readonly context?: Maybe<GraphqlSitePageContextFilterInput>;
   readonly pluginCreator?: Maybe<GraphqlSitePluginFilterInput>;
   readonly pluginCreatorId?: Maybe<GraphqlStringQueryOperatorInput>;
   readonly componentPath?: Maybe<GraphqlStringQueryOperatorInput>;
@@ -3742,15 +3754,12 @@ export type GraphqlStringQueryOperatorInput = {
   readonly glob?: Maybe<Scalars['String']>;
 };
 
-export type GraphqlGetAllArticlesQueryVariables = {};
+export type GraphqlUnnamed_1_QueryVariables = {
+  step: Maybe<Scalars['String']>;
+};
 
 
-export type GraphqlGetAllArticlesQuery = { readonly allContentfulArticles: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly title?: Maybe<string>, readonly createdAt?: Maybe<any>, readonly updatedAt?: Maybe<any>, readonly text?: Maybe<{ readonly text?: Maybe<string> }>, readonly pictures?: Maybe<ReadonlyArray<Maybe<{ readonly id: string, readonly fluid?: Maybe<GraphqlGatsbyContentfulFluid_WithWebpFragment> }>>> }> } };
-
-export type GraphqlGetSiteMetadataQueryVariables = {};
-
-
-export type GraphqlGetSiteMetadataQuery = { readonly site?: Maybe<{ readonly siteMetadata?: Maybe<{ readonly title?: Maybe<string>, readonly description?: Maybe<string>, readonly author?: Maybe<string> }> }> };
+export type GraphqlUnnamed_1_Query = { readonly contentfulArticles?: Maybe<{ readonly id: string, readonly title?: Maybe<string>, readonly step?: Maybe<string>, readonly text?: Maybe<{ readonly text?: Maybe<string> }>, readonly pictures?: Maybe<ReadonlyArray<Maybe<{ readonly id: string, readonly file?: Maybe<{ readonly url?: Maybe<string> }> }>>> }> };
 
 export type GraphqlGatsbyContentfulFixedFragment = { readonly base64?: Maybe<string>, readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string };
 

@@ -49,7 +49,7 @@
   "scripts": {
     "build": "gatsby build --prefix-paths",
     "build:local": "FORCE_DEV=true gatsby build",
-    "dev": "GATSBY_GRAPHQL_IDE=playground gatsby develop",
+    "dev": "gatsby develop",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json}\" && eslint --ext .tsx,.ts,.js,.jsx --fix src",
     "typecheck": "tsc --noEmit",
     "serve": "gatsby serve",

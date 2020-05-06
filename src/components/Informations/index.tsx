@@ -7,22 +7,26 @@ import { ArticleText } from '../ArticleText'
 import { ButtonBar } from '../ButtonBar'
 
 type InformationsProps = {
-  hidden: boolean,
+  data: Record<string, any>,
 }
 
-export const Informations = ({ hidden }: InformationsProps) => {
+export const Informations = ({ data }: InformationsProps) => {
 
   return (
-    <div className={`${hidden ? 'left-2/3' : 'left-1/1'} fixed w-2/6 bg-white h-full top-0 z-20`}>
+    <div className="left-2/3 fixed w-2/6 bg-white h-full top-0 z-20">
       <div>
-        <Title title="Etape 2" />
-        <Slider img="https://images.lanouvellerepublique.fr/image/upload/t_1020w/f_auto/5b95be27be7744fb5c8b467b.jpg" />
+        <Title title={`Étape ${data.step}`} />
+        {data.pictures !== null && data.pictures.map((res) => (
+          <Slider img={res.file.url} />
+        ))}
       </div>
       <div>
-        <ArticleTitle text="Mon avis sur Paris ?" />
-        <ArticleText text="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam eveniet dolores rem perspiciatis, magnam molestias a aliquam labore cupiditate, nam praesentium sequi obcaecati! Labore amet consequuntur architecto iusto eius accusamus natus veritatis!" />
+        <ArticleTitle text={data.title} />
+        <ArticleText text={data.text.text} />
       </div>
       <ButtonBar />
     </div>
   )
 }
+
+// réfl"chir à la mise en place du slider pour bien mettre les images

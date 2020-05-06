@@ -1,5 +1,5 @@
 import React from 'react'
-import { Map, TileLayer } from 'react-leaflet'
+import { Map, TileLayer} from 'react-leaflet'
 
 export const MapContainer = () => {
   const position = [51.505, -0.09]

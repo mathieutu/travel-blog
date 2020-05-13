@@ -11,7 +11,6 @@ export default () => {
     <>
       <Seo title="Home" />
       <div className={container}>
-        <button className="fixed left-1/2 z-20" type="button">test</button>
         <MapContainer />
       </div>
     </>

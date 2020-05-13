@@ -11,7 +11,6 @@ type TemplateProps = {
 export default ({ data }: TemplateProps) => (
   <>
     <div className={container}>
-      {console.log(data)}
       <MapContainer />
       <Informations data={data.contentfulArticles} />
     </div>

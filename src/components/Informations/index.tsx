@@ -22,9 +22,11 @@ export const Informations = ({ data }: InformationsProps) => {
       </div>
       <div>
         <ArticleTitle text={data.title} />
-        <ArticleText text={data.text.text} />
+        {data.text.text && (
+          <ArticleText text={data.text.text} />
+        )}
       </div>
-      <ButtonBar />
+      <ButtonBar step={Number(data)} />
     </div>
   )
 }

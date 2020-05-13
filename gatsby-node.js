@@ -24,9 +24,9 @@ exports.createPages = async ({ graphql, actions }) => {
     `,
   );
   const component = path.resolve('./src/pages/template.tsx');
-  result.data.allContentfulArticles.nodes.forEach(({ step }) => {
+  result.data.allContentfulArticles.nodes.forEach(({ id, step }) => {
     createPage({
-      path: `/${step}`,
+      path: `/${id}`,
       component,
       context: {
         step,
